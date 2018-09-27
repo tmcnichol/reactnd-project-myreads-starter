@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 class ListBooks extends Component {
-  componentDidMount() {
-    console.log(this);
-  }
-
   render() {
-    let imageLinkss = this.props.bk.imageLinks && this.props.bk.imageLinks.thumbnail || '';
+    let imageLinkss = this.props.bk.imageLinks && this.props.bk.imageLinks.thumbnail;
     console.log(imageLinkss);
     return (
       <li>
@@ -19,7 +14,7 @@ class ListBooks extends Component {
               backgroundImage: 'url("${imageLinkss}")' }}>
             </div>
             <div className="book-shelf-changer">
-              <select>
+              <select value={this.props.bk.shelf || "none"} onChange={(event) => {this.props.bookUpdate(this.props.bk, event.target.value) }}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>

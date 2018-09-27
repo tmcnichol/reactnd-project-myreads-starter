@@ -17,6 +17,15 @@ componentDidMount() {
   })
 }
 
+bookUpdate = (book, shelf) => {
+  BooksAPI.update(book, shelf).then(input => {
+    book.shelf = shelf;
+    this.setState(state => ({
+      books: state.books.filter(bk => bk.id !== book.id).concat([book])
+    }))
+  })
+}
+
   render() {
     return (
       <div className="app">
@@ -26,9 +35,9 @@ componentDidMount() {
             </div>
             <div className="list-books-content">
 
-              <Bookshelf name="Currently Reading" books={this.state.books.filter(bk => bk.shelf === "currentlyReading")} />
-              <Bookshelf name="Want To Read" books={this.state.books.filter(bk => bk.shelf === "wantToRead")} />
-              <Bookshelf name="Read" books={this.state.books.filter(bk => bk.shelf === "read")} />
+              <Bookshelf bookUpdate={this.bookUpdate} name="Currently Reading" books={this.state.books.filter(bk => bk.shelf === "currentlyReading")} />
+              <Bookshelf bookUpdate={this.bookUpdate} name="Want To Read" books={this.state.books.filter(bk => bk.shelf === "wantToRead")} />
+              <Bookshelf bookUpdate={this.bookUpdate} name="Read" books={this.state.books.filter(bk => bk.shelf === "read")} />
 
             </div>
             <div className="open-search">
