@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import HomePage from './HomePage'
-import SearchPage from './SearchPage'
 
 class ListBooks extends Component {
   render() {
