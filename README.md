@@ -35,8 +35,6 @@ After taking these steps in order, the project will launch on localhost:3000 and
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
 
-Remember that good React design practice is to create new JS files for each component and use import/require statements to include them where they are needed.
-
 ## Backend Server
 
 This project contains a backend server to enable basic functionality. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods that were used to perform necessary operations on the backend:
