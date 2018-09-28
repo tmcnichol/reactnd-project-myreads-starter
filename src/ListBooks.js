@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import HomePage from './HomePage'
+import SearchPage from './SearchPage'
 
 class ListBooks extends Component {
   render() {
-    let imageLinkss = this.props.bk.imageLinks && this.props.bk.imageLinks.thumbnail;
-    console.log(imageLinkss);
+    let imageURL = this.props.bk.imageLinks && this.props.bk.imageLinks.thumbnail;
     return (
       <li>
         <div className="book">
@@ -11,10 +12,11 @@ class ListBooks extends Component {
             <div className="book-cover" style={{
               width: 128,
               height: 193,
-              backgroundImage: 'url("${imageLinkss}")' }}>
+              backgroundImage: 'url("${imageURL}")' }}>
             </div>
             <div className="book-shelf-changer">
-              <select value={this.props.bk.shelf || "none"} onChange={(event) => {this.props.bookUpdate(this.props.bk, event.target.value) }}>
+              <select value={this.props.bk.shelf} onChange={(event) => {
+                this.props.bookUpdate(this.props.bk, event.target.value) }}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
