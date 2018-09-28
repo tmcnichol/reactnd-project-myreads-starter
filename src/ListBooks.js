@@ -12,10 +12,10 @@ class ListBooks extends Component {
             <div className="book-cover" style={{
               width: 128,
               height: 193,
-              backgroundImage: 'url("${imageURL}")' }}>
+              backgroundImage: `url("${imageURL}")` }}>
             </div>
             <div className="book-shelf-changer">
-              <select value={this.props.bk.shelf} onChange={(event) => {
+              <select value={this.props.bk.shelf || "none"} onChange={(event) => {
                 this.props.bookUpdate(this.props.bk, event.target.value) }}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
